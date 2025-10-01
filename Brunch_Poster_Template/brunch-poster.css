@@ -1,0 +1,545 @@
+/* ============================================
+   CSS Custom Properties
+   ============================================ */
+:root {
+  /* Colors */
+  --color-coral: #FF5742;
+  --color-beige: #E8E0D5;
+  --color-white: #FFFFFF;
+  --color-yellow: #FFB84D;
+  --color-blue: #A8D8E8;
+  --color-brown: #C89B6D;
+
+  /* Typography */
+  --font-serif-display: 'Playfair Display', Georgia, serif;
+  --font-serif-body: 'Lora', Georgia, serif;
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Spacing */
+  --margin-horizontal: 50px;
+  --margin-vertical: 60px;
+  --grid-gutter: 20px;
+
+  /* Sizes */
+  --poster-width: 1080px;
+  --poster-height: 1350px;
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  margin: 0;
+.logo:hover { opacity:.7; }
+.poster-wrapper {
+  width: 1080px;
+  height: 1350px;
+  will-change: transform;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ============================================
+   Poster Container
+   ============================================ */
+.poster-container {
+  width: 1080px;
+  height: 1350px;
+  background-color: var(--color-beige);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+              0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out;
+  transition: box-shadow 0.3s ease;
+}
+
+.poster-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2),
+              0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Removed unused entrance animations for lean build */
+
+/* ============================================
+   Header Section
+   ============================================ */
+.poster-header { display:flex; justify-content:space-between; padding:60px 50px 0; position:relative; z-index:10; }
+
+.address,
+.tagline {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-coral);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.address { text-align:left; }
+
+.tagline { text-align:right; max-width:220px; }
+
+.address:hover,
+.tagline:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   Headline Section
+   ============================================ */
+.headline-section { padding:0 50px; margin-top:80px; position:relative; z-index:10; }
+
+.headline-section h1 {
+  font-family: var(--font-serif-display);
+  font-size: 160px;
+  font-weight: 400;
+  color: var(--color-coral);
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  margin: 0;
+  transition: letter-spacing 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.headline-section h1:hover {
+  letter-spacing: 0px;
+  transform: translateX(5px);
+}
+
+.headline-section h2 {
+  font-family: var(--font-serif-body);
+  font-size: 106px;
+  font-weight: 300;
+  color: var(--color-coral);
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+  margin: 5px 0 0 0;
+  transition: letter-spacing 0.3s ease;
+  cursor: default;
+}
+
+.headline-section h2:hover {
+  letter-spacing: 3px;
+}
+
+/* ============================================
+   Image Container - Multi-Overlay Effect
+   ============================================ */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  margin: 150px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.image-overlay {
+  position: absolute;
+  width: 380px;
+  height: 500px;
+  background-image: url('mimosa-image.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2),
+              0px 4px 10px rgba(255, 87, 66, 0.1);
+  border-radius: 3px;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Decorative pseudo-elements removed for lean build */
+
+/* Individual Image Positioning - Multi-exposure overlay effect per spec */
+.image-1 { transform: translateX(-40px) rotate(-2deg); opacity: 1; z-index: 5; }
+.image-2 { transform: translateX(-20px) rotate(-1deg); opacity: 0.85; z-index: 4; }
+.image-3 { transform: translateX(0px) rotate(0deg);   opacity: 0.7;  z-index: 3; }
+.image-4 { transform: translateX(20px) rotate(1deg);  opacity: 0.85; z-index: 2; }
+.image-5 { transform: translateX(40px) rotate(2deg);  opacity: 1;   z-index: 1; }
+
+/* Unified subtle hover */
+.image-overlay:hover { box-shadow:0 12px 30px rgba(0,0,0,0.25); }
+
+/* ============================================
+   Info Section (Time & Day)
+   ============================================ */
+.info-section {
+  padding: 0 50px;
+  margin-top: auto;
+  margin-bottom: 85px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 1.2s backwards;
+}
+
+.info-section h3 {
+  font-family: var(--font-serif-display);
+  font-size: 186px;
+  font-weight: 700;
+  color: var(--color-coral);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  margin: 0;
+  transition: letter-spacing 0.3s ease, text-shadow 0.3s ease;
+  cursor: default;
+}
+
+ .info-section h3:hover { letter-spacing:-1px; }
+
+.info-section h4 {
+  font-family: var(--font-serif-body);
+  font-size: 120px;
+  font-weight: 400;
+  color: var(--color-coral);
+  letter-spacing: 0em;
+  line-height: 1.2;
+  margin: 12px 0 0;
+  transition: letter-spacing 0.3s ease;
+  cursor: default;
+}
+
+ .info-section h4:hover { letter-spacing:-1px; }
+
+/* ============================================
+   Footer Section
+   ============================================ */
+.poster-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 50px 60px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  animation: fadeIn 0.8s ease-out 1.4s backwards;
+}
+
+.logo {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-coral);
+  font-style: italic;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: translateX(5px);
+  color: #e64a32;
+}
+
+.logo svg text {
+  font-style: italic;
+}
+
+.icon {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.icon:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.icon svg {
+  width: 55px;
+  height: 55px;
+  transition: all 0.3s ease;
+}
+
+.icon:hover svg {
+  filter: drop-shadow(0 2px 8px rgba(255, 87, 66, 0.4));
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --poster-width: 800px;
+    --poster-height: 1000px;
+    --margin-horizontal: 40px;
+    --margin-vertical: 50px;
+  }
+
+  .headline-section {
+    margin-top: 60px;
+  }
+
+  .headline-section h1 {
+    font-size: 150px;
+    letter-spacing: -2px;
+  }
+
+  .headline-section h2 {
+    font-size: 58px;
+  }
+
+  .image-container {
+    height: 240px;
+    margin: 40px 0 0;
+  }
+
+  .image-overlay {
+    width: 160px;
+    height: 220px;
+  }
+
+  .image-1 {
+    transform: translateX(-36px) rotate(-3.5deg);
+  }
+
+  .image-2 {
+    transform: translateX(-18px) rotate(-1.75deg);
+  }
+
+  .image-4 {
+    transform: translateX(18px) rotate(1.75deg);
+  }
+
+  .image-5 {
+    transform: translateX(36px) rotate(3.5deg);
+  }
+
+  .image-1:hover {
+    transform: translateX(-36px) rotate(-3.5deg) translateY(-12px) scale(1.05);
+  }
+
+  .image-2:hover {
+    transform: translateX(-18px) rotate(-1.75deg) translateY(-12px) scale(1.05);
+  }
+
+  .image-3:hover {
+    transform: translateX(0px) rotate(0deg) translateY(-12px) scale(1.05);
+  }
+
+  .image-4:hover {
+    transform: translateX(18px) rotate(1.75deg) translateY(-12px) scale(1.05);
+  }
+
+  .image-5:hover {
+    transform: translateX(36px) rotate(3.5deg) translateY(-12px) scale(1.05);
+  }
+
+  .info-section {
+    margin-bottom: 70px;
+  }
+
+  .info-section h3 {
+    font-size: 120px;
+    letter-spacing: -3px;
+  }
+
+  .info-section h4 {
+    font-size: 60px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  :root {
+    --poster-width: 100%;
+    --poster-height: auto;
+    --margin-horizontal: 30px;
+    --margin-vertical: 40px;
+  }
+
+  .poster-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .poster-container:hover {
+    transform: none;
+  }
+
+  .poster-header {
+    padding: 30px 30px 0;
+  }
+
+  .address,
+  .tagline {
+    font-size: 7px;
+    max-width: 110px;
+    letter-spacing: 0.5px;
+  }
+
+  .headline-section {
+    margin-top: 45px;
+    padding: 0 30px;
+  }
+
+  .headline-section h1 {
+    font-size: 85px;
+    letter-spacing: -1px;
+    line-height: 0.75;
+  }
+
+  .headline-section h1:hover {
+    letter-spacing: -1px;
+    transform: none;
+  }
+
+  .headline-section h2 {
+    font-size: 38px;
+    letter-spacing: 0.5px;
+  }
+
+  .headline-section h2:hover {
+    letter-spacing: 0.5px;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 180px;
+    margin: 30px 0 0;
+  }
+
+  .image-overlay {
+    width: 110px;
+    height: 155px;
+  }
+
+  .image-1 {
+    transform: translateX(-25px) rotate(-3.5deg);
+  }
+
+  .image-2 {
+    transform: translateX(-12px) rotate(-1.75deg);
+  }
+
+  .image-4 {
+    transform: translateX(12px) rotate(1.75deg);
+  }
+
+  .image-5 {
+    transform: translateX(25px) rotate(3.5deg);
+  }
+
+  /* Simplified hover for mobile */
+  .image-overlay:hover {
+    transform: scale(1.02);
+  }
+
+  .image-1:hover,
+  .image-2:hover,
+  .image-3:hover,
+  .image-4:hover,
+  .image-5:hover {
+    transform: translateX(0) rotate(0deg) scale(1.02);
+  }
+
+  .info-section {
+    margin-bottom: 70px;
+    padding: 0 30px;
+  }
+
+  .info-section h3 {
+    font-size: 70px;
+    letter-spacing: -2px;
+  }
+
+  .info-section h3:hover {
+    letter-spacing: -2px;
+    text-shadow: none;
+  }
+
+  .info-section h4 {
+    font-size: 42px;
+    letter-spacing: 1px;
+  }
+
+  .info-section h4:hover {
+    letter-spacing: 1px;
+  }
+
+  .poster-footer {
+    padding: 0 30px 30px;
+  }
+
+  .logo {
+    font-size: 11px;
+  }
+
+  .icon svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  body {
+    background: white;
+  }
+
+  .icon svg { width:55px; height:55px; transition:filter .3s ease; }
+  .icon:hover svg { filter: drop-shadow(0 2px 6px rgba(255,87,66,0.4)); }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .image-overlay {
+    transform: translateX(0) rotate(0deg) !important;
+  }
+
+  .poster-container:hover {
+    transform: none !important;
+  }
+}
+}

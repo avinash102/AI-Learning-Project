@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Slow Coffee Saturday Brunch promotion featuring mimosas, 7AM-3PM every Saturday">
+    <title>Slow Coffee - Brunch is Here to Stay</title>
+    <link rel="stylesheet" href="brunch-poster.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@300;400;700&family=Lora:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="poster-wrapper">
+      <div class="poster-container">
+        <header class="poster-header">
+            <div class="address">
+                6838 EARL ST, TORONTO<br>
+                ON M4W 2J2, CANADA
+            </div>
+            <div class="tagline">
+                WE CREATE INVITING CAFÉ SPACES<br>
+                AND ROASTING OUTSTANDING COFFEE.
+            </div>
+        </header>
+        <section class="headline-section">
+            <h1>Brunch</h1>
+            <h2>Is Here to Stay</h2>
+        </section>
+        <section class="image-container" aria-label="Brunch mimosas (multi layered artistic effect)">
+            <div class="image-overlay image-1" aria-hidden="false"></div>
+            <div class="image-overlay image-2" aria-hidden="true"></div>
+            <div class="image-overlay image-3" aria-hidden="true"></div>
+            <div class="image-overlay image-4" aria-hidden="true"></div>
+            <div class="image-overlay image-5" aria-hidden="true"></div>
+        </section>
+        <section class="info-section">
+            <h3>7AM–3PM</h3>
+            <h4>Every Saturday</h4>
+        </section>
+        <footer class="poster-footer">
+            <div class="logo">
+                <svg width="80" height="30" viewBox="0 0 80 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="20" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#FF5742" stroke="#FF5742" stroke-width="0.5">Slow Coffee</text>
+                </svg>
+            </div>
+            <div class="icon">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="28" stroke="#FF5742" stroke-width="2"/>
+                    <ellipse cx="30" cy="27" rx="8" ry="10" stroke="#FF5742" stroke-width="2" fill="none"/>
+                    <path d="M22 32 Q30 36 38 32" stroke="#FF5742" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+        </footer>
+            </div>
+        </div>
+                <script>
+                    (function() { // viewport fit scaling
+                        const BASE_W = 1080, BASE_H = 1350;
+                        const wrapper = document.querySelector('.poster-wrapper');
+                        function scalePoster() {
+                            const M = 40;
+                            const scale = Math.min((window.innerWidth - M) / BASE_W, (window.innerHeight - M) / BASE_H, 1);
+                            wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                        }
+                        ['resize','orientationchange','load'].forEach(e=>window.addEventListener(e, scalePoster));
+                        scalePoster();
+                    })();
+                </script>
+</body>
+</html>
